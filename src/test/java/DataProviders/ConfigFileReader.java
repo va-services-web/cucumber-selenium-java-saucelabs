@@ -29,10 +29,10 @@ public class ConfigFileReader {
 
     public EnvironmentType getEnvironment() {
         String environment = properties.getProperty("environment");
-        if(environment == null || environment.equalsIgnoreCase("local")){
+        if(environment == null || environment.trim().equalsIgnoreCase("local")){
             return EnvironmentType.LOCAL;
         }
-        else if(environment.equals("saucelabs")) {
+        else if(environment.trim().equalsIgnoreCase("saucelabs")) {
             return EnvironmentType.SAUCELABS;
         }
         else throw new RuntimeException("'environment' not specified correctly in Configuration.properties. Expected [local|saucelabs] and got " + environment);
@@ -42,7 +42,7 @@ public class ConfigFileReader {
     public String getChromeDriverPath(){
         String chromeDriverPath = properties.getProperty("chromeDriverPath");
         if(chromeDriverPath!= null) {
-            return chromeDriverPath;
+            return chromeDriverPath.trim();
         }else {
             throw new RuntimeException("'chromeDriverPath' not specified in the Configuration.properties file.");
         }
@@ -52,7 +52,7 @@ public class ConfigFileReader {
     public String getFirefoxDriverPath(){
         String firefoxDriverPath = properties.getProperty("firefoxDriverPath");
         if(firefoxDriverPath!= null) {
-            return firefoxDriverPath;
+            return firefoxDriverPath.trim();
         }else {
             throw new RuntimeException("'firefoxDriverPath' not specified in the Configuration.properties file.");
         }
@@ -61,20 +61,20 @@ public class ConfigFileReader {
     public String getIeDriverPath(){
         String ieDriverPath = properties.getProperty("ieDriverPath");
         if(ieDriverPath!= null) {
-            return ieDriverPath;
+            return ieDriverPath.trim();
         }else {
             throw new RuntimeException("'ieDriverPath' not specified in the Configuration.properties file.");
         }
     }
 
     private DriverType getDriverType(String browserName){
-        if(browserName == null || browserName.equals("firefox")){
+        if(browserName == null || browserName.trim().equalsIgnoreCase("firefox")){
             return DriverType.FIREFOX;
         }
-        else if(browserName.equalsIgnoreCase("chrome")){
+        else if(browserName.trim().equalsIgnoreCase("chrome")){
             return DriverType.CHROME;
         }
-        else if(browserName.equals("ie")) {
+        else if(browserName.trim().equalsIgnoreCase("ie")) {
             return DriverType.IE;
         }
         else throw new RuntimeException("'browser name' has an invalid value in Configuration.properties. Expected [chrome|firefox|ie]");
@@ -91,7 +91,7 @@ public class ConfigFileReader {
     public Integer getImplicitlyWait(){
         String implicitlyWait = properties.getProperty("implicitlyWait");
         if(implicitlyWait!= null) {
-            return Integer.parseInt(implicitlyWait);
+            return Integer.parseInt(implicitlyWait.trim());
         }else {
             System.out.println("'implicitlyWait' not specified in the Configuration.properties file. Will be set to automatically to 10 seconds");
             return 10;
@@ -101,7 +101,7 @@ public class ConfigFileReader {
     public String getURL(){
         String url = properties.getProperty("url");
         if(url!= null) {
-            return url;
+            return url.trim();
         }else {
             throw new RuntimeException("'url' not specified in the Configuration.properties file.");
         }
@@ -110,7 +110,7 @@ public class ConfigFileReader {
     public String getSauceUsername(){
         String sauceUsername = properties.getProperty("sauceUsername");
         if(sauceUsername!= null) {
-            return sauceUsername;
+            return sauceUsername.trim();
         }else {
             throw new RuntimeException("'sauceUsername' not specified in the Configuration.properties file.");
         }
@@ -119,7 +119,7 @@ public class ConfigFileReader {
     public String getSauceAccessKey(){
         String sauceAccessKey = properties.getProperty("sauceAccessKey");
         if(sauceAccessKey!= null) {
-            return sauceAccessKey;
+            return sauceAccessKey.trim();
         }else {
             throw new RuntimeException("'sauceAccessKey' not specified in the Configuration.properties file.");
         }
@@ -128,7 +128,7 @@ public class ConfigFileReader {
     public String getSauceRemoteWebDriverURL(){
         String sauceRemoteWebDriverURL = properties.getProperty("sauceRemoteWebDriverURL");
         if(sauceRemoteWebDriverURL!= null) {
-            return sauceRemoteWebDriverURL;
+            return sauceRemoteWebDriverURL.trim();
         }else {
             throw new RuntimeException("'sauceRemoteWebDriverURL' not specified in the Configuration.properties file.");
         }
@@ -137,7 +137,7 @@ public class ConfigFileReader {
     public Integer getSauceBrowserVersion(){
         String sauceBrowserVersion = properties.getProperty("sauceBrowserVersion");
         if(sauceBrowserVersion!= null) {
-            return Integer.parseInt(sauceBrowserVersion);
+            return Integer.parseInt(sauceBrowserVersion.trim());
         }else {
             throw new RuntimeException("'sauceBrowserVersion' not specified in the Configuration.properties file.");
         }
@@ -146,7 +146,7 @@ public class ConfigFileReader {
     public String getSaucePlatformName(){
         String saucePlatformName = properties.getProperty("saucePlatformName");
         if(saucePlatformName!= null) {
-            return saucePlatformName;
+            return saucePlatformName.trim();
         }else {
             throw new RuntimeException("'saucePlatformName' not specified in the Configuration.properties file.");
         }
