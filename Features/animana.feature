@@ -1,4 +1,9 @@
-Feature: Login and check
+Feature: 
+  In order to use the system
+  As a registered user
+  I want to be able to Login
+  
+
   Scenario: scenario one
     Given Open Page "https://test.animana.com/web2/login"
     And Login with username="testnl40" and password="Test#12345"
