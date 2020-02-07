@@ -1,8 +1,4 @@
-Feature: 
-  In order to use the system
-  As a registered user
-  I want to be able to Login
-  
+Feature: Login  
 
   Scenario: scenario one
     Given Open Page "https://test.animana.com/web2/login"
